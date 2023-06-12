@@ -29,10 +29,22 @@ public class SampleTest {
     @Test
     public void inputEmptyStringTest() {
         MobileElement el1 = (MobileElement) driver.findElementById("ru.netology.testing.uiautomator:id/userInput");
-        MobileElement el2 = (MobileElement) driver.findElementById("ru.netology.testing.uiautomator:id/textToBeChanged");
-        MobileElement el3 = (MobileElement) driver.findElementById("ru.netology.testing.uiautomator:id/buttonChange");
-        el3.click();
-        Assertions.assertNotEquals (el1.getText(), el2.getText());
+        el1.click();
+        MobileElement el2 = (MobileElement) driver.findElementById("ru.netology.testing.uiautomator:id/buttonChange");
+        el2.click();
+        MobileElement el3 = (MobileElement) driver.findElementById("ru.netology.testing.uiautomator:id/textToBeChanged");
+        Assertions.assertEquals ("Привет, UiAutomator!", el3.getText());
+    }
+
+    @Test
+    public void inputSpaceTest() {
+        MobileElement el1 = (MobileElement) driver.findElementById("ru.netology.testing.uiautomator:id/userInput");
+        el1.click();
+        el1.sendKeys(" ");
+        MobileElement el2 = (MobileElement) driver.findElementById("ru.netology.testing.uiautomator:id/buttonChange");
+        el2.click();
+        MobileElement el3 = (MobileElement) driver.findElementById("ru.netology.testing.uiautomator:id/textToBeChanged");
+        Assertions.assertEquals ("Привет, UiAutomator!", el3.getText());
     }
 
     @Test
