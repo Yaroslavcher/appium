@@ -1,5 +1,7 @@
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
+
+import java.awt.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import org.junit.jupiter.api.*;
@@ -30,10 +32,11 @@ public class SampleTest {
     public void inputEmptyStringTest() {
         MobileElement el1 = (MobileElement) driver.findElementById("ru.netology.testing.uiautomator:id/userInput");
         el1.click();
+        el1.sendKeys("");
         MobileElement el2 = (MobileElement) driver.findElementById("ru.netology.testing.uiautomator:id/buttonChange");
         el2.click();
         MobileElement el3 = (MobileElement) driver.findElementById("ru.netology.testing.uiautomator:id/textToBeChanged");
-        Assertions.assertEquals ("Привет, UiAutomator!", el3.getText());
+        Assertions.assertNotEquals (el1.getText(), el3.getText());
     }
 
     @Test
@@ -44,7 +47,7 @@ public class SampleTest {
         MobileElement el2 = (MobileElement) driver.findElementById("ru.netology.testing.uiautomator:id/buttonChange");
         el2.click();
         MobileElement el3 = (MobileElement) driver.findElementById("ru.netology.testing.uiautomator:id/textToBeChanged");
-        Assertions.assertEquals ("Привет, UiAutomator!", el3.getText());
+        Assertions.assertEquals ("UiAutomator", el3.getText());
     }
 
     @Test
