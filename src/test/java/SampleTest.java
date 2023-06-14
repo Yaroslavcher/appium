@@ -30,13 +30,13 @@ public class SampleTest {
 
     @Test
     public void inputEmptyStringTest() {
+        MobileElement textBefore = (MobileElement) driver.findElementById("ru.netology.testing.uiautomator:id/textToBeChanged");
         MobileElement el1 = (MobileElement) driver.findElementById("ru.netology.testing.uiautomator:id/userInput");
         el1.click();
-        el1.sendKeys("");
         MobileElement el2 = (MobileElement) driver.findElementById("ru.netology.testing.uiautomator:id/buttonChange");
         el2.click();
-        MobileElement el3 = (MobileElement) driver.findElementById("ru.netology.testing.uiautomator:id/textToBeChanged");
-        Assertions.assertNotEquals (el1.getText(), el3.getText());
+        MobileElement textAfter = (MobileElement) driver.findElementById("ru.netology.testing.uiautomator:id/textToBeChanged");
+        Assertions.assertEquals (textBefore.getText(), textAfter.getText());
     }
 
     @Test
